@@ -1,0 +1,21 @@
+employee_id,name,age,department,country,job_title,years_experience,salary,programming_language,code_snippet,skill_level
+1,김철수,28,Backend,South Korea,Senior Developer,5,85000,Python,"def calculate_sum(a, b):\n    return a + b",Expert
+2,이영희,32,Frontend,South Korea,Lead Developer,8,95000,JavaScript,"const fetchData = async () => {\n    return await api.get('/data');\n};",Expert
+3,John Smith,25,DevOps,USA,Junior Engineer,2,65000,Shell,"#!/bin/bash\nfor file in *.log; do\n    echo $file\ndone",Intermediate
+4,Maria Garcia,35,Data Science,Spain,Data Scientist,10,105000,Python,"import pandas as pd\ndf = pd.read_csv('data.csv')\ndf.head()",Expert
+5,박민수,29,Backend,South Korea,Developer,4,75000,Java,"public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello\");\n    }\n}",Advanced
+6,Anna Mueller,27,Frontend,Germany,Developer,3,70000,TypeScript,"interface User {\n    id: number;\n    name: string;\n}",Advanced
+7,Chen Wei,31,Full Stack,China,Senior Developer,7,90000,Go,"func main() {\n    fmt.Println(\"Hello, World!\")\n}",Expert
+8,Sarah Johnson,26,Mobile,USA,Developer,3,72000,Kotlin,"fun greet(name: String) {\n    println(\"Hello, $name\")\n}",Intermediate
+9,최지우,24,Backend,South Korea,Junior Developer,1,55000,Python,"class User:\n    def __init__(self, name):\n        self.name = name",Beginner
+10,Lucas Silva,30,Data Science,Brazil,Data Engineer,6,88000,R,"library(dplyr)\ndata %>% filter(age > 25) %>% select(name, age)",Advanced
+11,Emma Wilson,33,DevOps,UK,DevOps Engineer,9,98000,Python,"import kubernetes\nfrom kubernetes import client, config",Expert
+12,강민지,27,Frontend,South Korea,Developer,4,73000,JavaScript,"function debounce(func, wait) {\n    let timeout;\n    return function() {\n        clearTimeout(timeout);\n        timeout = setTimeout(func, wait);\n    };\n}",Advanced
+13,Ahmed Hassan,29,Backend,Egypt,Developer,5,68000,PHP,"<?php\nclass Database {\n    private $conn;\n    public function connect() { }\n}",Advanced
+14,Sophie Martin,26,Mobile,France,Junior Developer,2,62000,Swift,"struct ContentView: View {\n    var body: some View {\n        Text(\"Hello\")\n    }\n}",Intermediate
+15,Raj Kumar,34,Data Science,India,Senior Data Scientist,11,110000,Python,"from sklearn.model_selection import train_test_split\nX_train, X_test = train_test_split(X, y, test_size=0.2)",Expert
+16,오수진,28,Full Stack,South Korea,Developer,5,80000,JavaScript,"async function processData(data) {\n    try {\n        const result = await transform(data);\n        return result;\n    } catch(e) {\n        console.error(e);\n    }\n}",Advanced
+17,Hans Schmidt,31,Backend,Germany,Senior Developer,8,93000,Rust,"fn main() {\n    let numbers = vec![1, 2, 3];\n    println!(""{:?}"", numbers);\n}",Expert
+18,Yuki Tanaka,25,Frontend,Japan,Developer,3,71000,Vue,"<template>\n  <div class=""app"">\n    {{ message }}\n  </div>\n</template>",Intermediate
+19,Isabella Rossi,30,DevOps,Italy,DevOps Engineer,6,87000,Terraform,"resource ""aws_instance"" ""web"" {\n  ami = ""ami-123456""\n  instance_type = ""t2.micro""\n}",Advanced
+20,정현우,32,Data Science,South Korea,Data Scientist,9,102000,Python,"import tensorflow as tf\nmodel = tf.keras.Sequential([\n    tf.keras.layers.Dense(128, activation='relu')\n])",Expert
