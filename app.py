@@ -127,7 +127,7 @@ with tab1:
         column_config={
             "salary": st.column_config.NumberColumn(
                 "salary",
-                format="$%d"
+                format="$%,.0f"
             )
         }
     )
@@ -156,7 +156,7 @@ with tab2:
         column_config={
             "salary": st.column_config.NumberColumn(
                 "salary",
-                format="$%.0f"
+                format="$%,.0f"
             )
         }
     )
@@ -191,7 +191,7 @@ with tab2:
         column_config={
             "평균 연봉": st.column_config.NumberColumn(
                 "평균 연봉",
-                format="$%.0f"
+                format="$%,.0f"
             ),
             "평균 경력": st.column_config.NumberColumn(
                 "평균 경력",
