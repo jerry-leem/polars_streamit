@@ -2,6 +2,9 @@ import streamlit as st
 import polars as pl
 import plotly.express as px
 from pathlib import Path
+import subprocess
+import sys
+import time
 
 # 페이지 설정
 st.set_page_config(
@@ -12,20 +15,67 @@ st.set_page_config(
 
 # 타이틀
 st.title("📊 Polars DataFrame Viewer")
-st.markdown("### 프로그래머 데이터셋 분석")
+st.markdown("### 프로그래머 데이터셋 분석 (100만 레코드)")
+
+# 데이터 생성 함수
+def generate_dataset():
+    """데이터셋이 없을 경우 자동 생성"""
+    st.warning("⚠️ 데이터셋이 없습니다. 100만 개 레코드를 생성하는 중...")
+    progress_bar = st.progress(0)
+    status_text = st.empty()
+
+    try:
+        status_text.text("데이터 생성 스크립트 실행 중...")
+        progress_bar.progress(20)
+
+        # 스크립트 실행
+        result = subprocess.run(
+            [sys.executable, "generate_large_dataset.py"],
+            capture_output=True,
+            text=True,
+            timeout=600
+        )
+
+        progress_bar.progress(80)
+
+        if result.returncode == 0:
+            progress_bar.progress(100)
+            status_text.text("✅ 데이터 생성 완료!")
+            time.sleep(1)
+            st.success(result.stdout)
+            return True
+        else:
+            st.error(f"❌ 데이터 생성 실패:\n{result.stderr}")
+            return False
+    except Exception as e:
+        st.error(f"❌ 오류 발생: {e}")
+        return False
 
 # 데이터 로드 함수
 @st.cache_data
 def load_data():
     """Polars를 사용하여 CSV 데이터 로드"""
     data_path = Path(__file__).parent / "data" / "programmers_dataset.csv"
+
+    # 데이터 파일이 없으면 생성
+    if not data_path.exists():
+        if generate_dataset():
+            st.rerun()
+        else:
+            st.stop()
+
+    # 데이터 로드 시작 시간 측정
+    start_time = time.time()
     df = pl.read_csv(data_path)
+    load_time = time.time() - start_time
+
+    st.success(f"✅ 데이터 로드 성공: {df.shape[0]:,}개 행, {df.shape[1]}개 열 (로드 시간: {load_time:.2f}초)")
+
     return df
 
 # 데이터 로드
 try:
     df = load_data()
-    st.success(f"✅ 데이터 로드 성공: {df.shape[0]}개 행, {df.shape[1]}개 열")
 except Exception as e:
     st.error(f"❌ 데이터 로드 실패: {e}")
     st.stop()
