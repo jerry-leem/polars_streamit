@@ -123,7 +123,13 @@ with tab1:
     st.dataframe(
         filtered_df.to_pandas(),
         use_container_width=True,
-        height=400
+        height=400,
+        column_config={
+            "salary": st.column_config.NumberColumn(
+                "salary",
+                format="$%d"
+            )
+        }
     )
 
     # 컬럼 정보
@@ -144,7 +150,16 @@ with tab2:
 
     # 기술 통계
     stats_df = filtered_df.select(numeric_cols).describe()
-    st.dataframe(stats_df.to_pandas(), use_container_width=True)
+    st.dataframe(
+        stats_df.to_pandas(),
+        use_container_width=True,
+        column_config={
+            "salary": st.column_config.NumberColumn(
+                "salary",
+                format="$%.0f"
+            )
+        }
+    )
 
     # 컬럼별 통계 카드
     st.subheader("주요 지표")
@@ -170,7 +185,20 @@ with tab2:
         pl.col("years_experience").mean().alias("평균 경력")
     ]).sort("평균 연봉", descending=True)
 
-    st.dataframe(dept_stats.to_pandas(), use_container_width=True)
+    st.dataframe(
+        dept_stats.to_pandas(),
+        use_container_width=True,
+        column_config={
+            "평균 연봉": st.column_config.NumberColumn(
+                "평균 연봉",
+                format="$%.0f"
+            ),
+            "평균 경력": st.column_config.NumberColumn(
+                "평균 경력",
+                format="%.1f년"
+            )
+        }
+    )
 
 # 탭 3: 코드 샘플
 with tab3:
