@@ -124,7 +124,7 @@ with tab1:
     display_df['salary'] = display_df['salary'].apply(lambda x: f"${x:,.0f}")
 
     st.dataframe(
-        display_df,
+        display_df.style.set_properties(**{'text-align': 'right'}, subset=['salary']),
         use_container_width=True,
         height=400
     )
@@ -151,7 +151,7 @@ with tab2:
     stats_display['salary'] = stats_display['salary'].apply(lambda x: f"${x:,.0f}")
 
     st.dataframe(
-        stats_display,
+        stats_display.style.set_properties(**{'text-align': 'right'}, subset=['salary']),
         use_container_width=True
     )
 
@@ -184,7 +184,7 @@ with tab2:
     dept_display['평균 경력'] = dept_display['평균 경력'].apply(lambda x: f"{x:.1f}년")
 
     st.dataframe(
-        dept_display,
+        dept_display.style.set_properties(**{'text-align': 'right'}, subset=['평균 연봉', '평균 경력']),
         use_container_width=True
     )
 
